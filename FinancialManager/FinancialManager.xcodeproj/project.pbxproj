@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		D8A7C87E77D4E3625D0D05BF /* Pods_FinancialManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE9345263F2005367A29AEAC /* Pods_FinancialManager.framework */; };
+		E21DA1DE25A88ED80076B7F5 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DA1DD25A88ED80076B7F5 /* Expense.swift */; };
+		E21DA1E125A891760076B7F5 /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DA1E025A891760076B7F5 /* Income.swift */; };
 		E2B91E5625A8888400633D1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B91E5525A8888400633D1A /* AppDelegate.swift */; };
 		E2B91E5825A8888400633D1A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B91E5725A8888400633D1A /* SceneDelegate.swift */; };
 		E2B91E5A25A8888400633D1A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B91E5925A8888400633D1A /* ViewController.swift */; };
@@ -20,6 +22,8 @@
 /* Begin PBXFileReference section */
 		5B07DBA684F544440B6B63E3 /* Pods-FinancialManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinancialManager.debug.xcconfig"; path = "Target Support Files/Pods-FinancialManager/Pods-FinancialManager.debug.xcconfig"; sourceTree = "<group>"; };
 		8678C9F555DC2A8D61317862 /* Pods-FinancialManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinancialManager.release.xcconfig"; path = "Target Support Files/Pods-FinancialManager/Pods-FinancialManager.release.xcconfig"; sourceTree = "<group>"; };
+		E21DA1DD25A88ED80076B7F5 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
+		E21DA1E025A891760076B7F5 /* Income.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Income.swift; sourceTree = "<group>"; };
 		E2B91E5225A8888400633D1A /* FinancialManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinancialManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2B91E5525A8888400633D1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2B91E5725A8888400633D1A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,8 +62,16 @@
 				5B07DBA684F544440B6B63E3 /* Pods-FinancialManager.debug.xcconfig */,
 				8678C9F555DC2A8D61317862 /* Pods-FinancialManager.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E21DA1DC25A88E890076B7F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E21DA1DD25A88ED80076B7F5 /* Expense.swift */,
+				E21DA1E025A891760076B7F5 /* Income.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E2B91E4925A8888400633D1A = {
@@ -83,6 +95,7 @@
 		E2B91E5425A8888400633D1A /* FinancialManager */ = {
 			isa = PBXGroup;
 			children = (
+				E21DA1DC25A88E890076B7F5 /* Model */,
 				E2B91E5525A8888400633D1A /* AppDelegate.swift */,
 				E2B91E5725A8888400633D1A /* SceneDelegate.swift */,
 				E2B91E5925A8888400633D1A /* ViewController.swift */,
@@ -210,8 +223,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E21DA1DE25A88ED80076B7F5 /* Expense.swift in Sources */,
 				E2B91E5A25A8888400633D1A /* ViewController.swift in Sources */,
 				E2B91E5625A8888400633D1A /* AppDelegate.swift in Sources */,
+				E21DA1E125A891760076B7F5 /* Income.swift in Sources */,
 				E2B91E5825A8888400633D1A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
