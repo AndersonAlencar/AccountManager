@@ -17,8 +17,8 @@ class OperationsViewController: UIViewController {
     @IBOutlet weak var segmentedOperation: UISegmentedControl!
     @IBOutlet weak var operationsTable: UITableView!
     
-    let expenses = ExpenseManager().mockData
-    let incomes = IncomeManager().mockData
+    var expenses = ExpenseManager.shared.mockData
+    var incomes = IncomeManager.shared.mockData
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +29,16 @@ class OperationsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        updateAmount()
+    }
+    
+    func updateAmount() {
         switch segmentedOperation.selectedSegmentIndex {
             case 0:
-                amountOperation.text = "R$ \(ExpenseManager().totalExpenses())"
+                amountOperation.text = "R$ \(ExpenseManager.shared.totalExpenses())"
             default:
-                amountOperation.text = "R$ \(IncomeManager().totalIncomes())"
+                amountOperation.text = "R$ \(IncomeManager.shared.totalIncomes())"
         }
-        
     }
     
     func setSegmentedOperation() {
@@ -51,11 +54,11 @@ class OperationsViewController: UIViewController {
             case 0:
                 segmentedOperation.selectedSegmentTintColor = .expenseSegmented
                 titleOperation.text = "Despesas Totais"
-                amountOperation.text = "R$ \(ExpenseManager().totalExpenses())"
+                amountOperation.text = "R$ \(ExpenseManager.shared.totalExpenses())"
             default:
                 segmentedOperation.selectedSegmentTintColor = .incomeSegmented
                 titleOperation.text = "Receitas Totais"
-                amountOperation.text = "R$ \(IncomeManager().totalIncomes())"
+                amountOperation.text = "R$ \(IncomeManager.shared.totalIncomes())"
 
         }
         operationsTable.reloadData()
@@ -73,6 +76,8 @@ class OperationsViewController: UIViewController {
     @IBAction func addNewOperation(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "CreateAndEditOperation", bundle: nil)
         let newOperationController = storyboard.instantiateViewController(withIdentifier: "OperationControllerID") as! UINavigationController
+        let controller = newOperationController.topViewController as! NewOperationViewController
+        controller.delegateOperation = self
         present(newOperationController, animated: true, completion: nil)
     }
     
@@ -107,5 +112,18 @@ extension OperationsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Selecionou a célula: \(indexPath.row)")
+    }
+}
+
+
+extension OperationsViewController {
+    func reloadData() {
+        updateAmount()
+        expenses = ExpenseManager.shared.mockData
+        incomes = IncomeManager.shared.mockData
+        DispatchQueue.main.async {
+            self.operationsTable.reloadData()
+
+        }
     }
 }

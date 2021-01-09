@@ -17,7 +17,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FyM-Zs-RVo">
-                                <rect key="frame" x="112" y="98" width="60" height="30"/>
+                                <rect key="frame" x="112" y="98" width="67" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Despesa">
                                     <color key="titleColor" red="0.92156862750000001" green="0.20784313730000001" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
@@ -26,7 +27,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JmD-O4-gf2">
-                                <rect key="frame" x="240" y="98" width="51" height="30"/>
+                                <rect key="frame" x="234" y="98" width="57" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Receita">
                                     <color key="titleColor" red="0.92156862750000001" green="0.5161737609" blue="0.1153713121" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
@@ -35,32 +37,129 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cf8-9V-ca4">
-                                <rect key="frame" x="138" y="128" width="8" height="8"/>
+                                <rect key="frame" x="141.5" y="131" width="8" height="8"/>
                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="8" id="c0R-G2-uqS"/>
                                     <constraint firstAttribute="width" constant="8" id="qKq-6Z-d9u"/>
                                 </constraints>
                             </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNP-aX-EbG" customClass="FloatingLabelInput" customModule="FinancialManager" customModuleProvider="target">
+                                <rect key="frame" x="20" y="176" width="186.5" height="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="_placeholder" value="Valor"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="activeBorderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q6m-9M-Bup" customClass="FloatingLabelInput" customModule="FinancialManager" customModuleProvider="target">
+                                <rect key="frame" x="20" y="257" width="389" height="34"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="_placeholder" value="Descrição"/>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYc-T6-lcd">
+                                <rect key="frame" x="20" y="350" width="171" height="44"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Xy3-lM-0Bw"/>
+                                    <constraint firstAttribute="width" constant="171" id="iJK-Gt-VAF"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="631892458.04929197">
+                                    <!--2021-01-09 13:40:58 +0000-->
+                                </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="631191600">
+                                    <!--2021-01-01 11:00:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="662641200">
+                                    <!--2021-12-31 11:00:00 +0000-->
+                                </date>
+                                <locale key="locale" localeIdentifier="pt_BR"/>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIe-EZ-Y0F">
+                                <rect key="frame" x="20" y="321" width="36" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="Ge4-XY-ooP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6D-ap-77m">
+                                <rect key="frame" x="20" y="414" width="39" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z1u-6C-sDs">
+                                <rect key="frame" x="335" y="409" width="51" height="31"/>
+                            </switch>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bAa-iN-iSX">
+                                <rect key="frame" x="20" y="457" width="374" height="1"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="WCu-Dx-HNC"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4qj-BO-X1K"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Z1u-6C-sDs" firstAttribute="centerY" secondItem="v6D-ap-77m" secondAttribute="centerY" id="3Ps-Ey-3F4"/>
+                            <constraint firstItem="q6m-9M-Bup" firstAttribute="leading" secondItem="4qj-BO-X1K" secondAttribute="leading" constant="20" id="5uh-vg-OFE"/>
+                            <constraint firstItem="4qj-BO-X1K" firstAttribute="trailing" secondItem="Z1u-6C-sDs" secondAttribute="trailing" constant="30" id="AmY-gG-xwX"/>
+                            <constraint firstItem="q6m-9M-Bup" firstAttribute="width" secondItem="ueG-Mk-ZdG" secondAttribute="width" multiplier="0.94" id="BLH-UG-IKA"/>
+                            <constraint firstItem="aIe-EZ-Y0F" firstAttribute="leading" secondItem="4qj-BO-X1K" secondAttribute="leading" constant="20" id="Dg0-hN-3sW"/>
                             <constraint firstItem="cf8-9V-ca4" firstAttribute="centerX" secondItem="FyM-Zs-RVo" secondAttribute="centerX" id="EUX-Ev-7jN"/>
                             <constraint firstItem="4qj-BO-X1K" firstAttribute="trailing" secondItem="JmD-O4-gf2" secondAttribute="trailing" constant="123" id="H43-RQ-dai"/>
                             <constraint firstItem="FyM-Zs-RVo" firstAttribute="leading" secondItem="4qj-BO-X1K" secondAttribute="leading" constant="112" id="Hbd-q6-HQ3"/>
+                            <constraint firstItem="JYc-T6-lcd" firstAttribute="top" secondItem="aIe-EZ-Y0F" secondAttribute="bottom" constant="8" id="LSM-tj-ElY"/>
                             <constraint firstItem="cf8-9V-ca4" firstAttribute="top" secondItem="FyM-Zs-RVo" secondAttribute="bottom" id="MnJ-XC-BoR"/>
+                            <constraint firstItem="bAa-iN-iSX" firstAttribute="leading" secondItem="ueG-Mk-ZdG" secondAttribute="leadingMargin" id="N5p-lO-KWr"/>
                             <constraint firstItem="FyM-Zs-RVo" firstAttribute="top" secondItem="4qj-BO-X1K" secondAttribute="top" constant="10" id="NcC-MJ-NOn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bAa-iN-iSX" secondAttribute="trailing" id="O5D-Qk-9Bp"/>
+                            <constraint firstItem="v6D-ap-77m" firstAttribute="top" secondItem="JYc-T6-lcd" secondAttribute="bottom" constant="20" id="OtW-CF-qNF"/>
+                            <constraint firstItem="aIe-EZ-Y0F" firstAttribute="top" secondItem="q6m-9M-Bup" secondAttribute="bottom" constant="30" id="PdK-ar-kx1"/>
+                            <constraint firstItem="bAa-iN-iSX" firstAttribute="top" secondItem="Z1u-6C-sDs" secondAttribute="bottom" constant="17" id="Slm-1v-sGQ"/>
+                            <constraint firstItem="v6D-ap-77m" firstAttribute="leading" secondItem="4qj-BO-X1K" secondAttribute="leading" constant="20" id="T6L-xj-oOb"/>
+                            <constraint firstItem="GNP-aX-EbG" firstAttribute="leading" secondItem="4qj-BO-X1K" secondAttribute="leading" constant="20" id="TR6-tu-TSZ"/>
+                            <constraint firstItem="q6m-9M-Bup" firstAttribute="top" secondItem="GNP-aX-EbG" secondAttribute="bottom" constant="45" id="W0Y-EX-RAZ"/>
+                            <constraint firstItem="JYc-T6-lcd" firstAttribute="leading" secondItem="4qj-BO-X1K" secondAttribute="leading" constant="20" id="b7B-WX-GEL"/>
                             <constraint firstItem="JmD-O4-gf2" firstAttribute="top" secondItem="4qj-BO-X1K" secondAttribute="top" constant="10" id="lW5-r9-C51"/>
+                            <constraint firstItem="GNP-aX-EbG" firstAttribute="top" secondItem="FyM-Zs-RVo" secondAttribute="bottom" constant="45" id="mmd-hx-sUC"/>
+                            <constraint firstItem="GNP-aX-EbG" firstAttribute="width" secondItem="ueG-Mk-ZdG" secondAttribute="width" multiplier="0.45" id="xcP-YQ-9W7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QOI-Yh-XER">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="IV8-FB-32Y"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancelar" id="IV8-FB-32Y">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="cancelOperation:" destination="cqo-Mb-a02" id="12Y-Re-Nfh"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Salvar" id="y3q-0D-vfU">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="saveOperation:" destination="cqo-Mb-a02" id="a1a-Af-s9C"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dateOperation" destination="JYc-T6-lcd" id="k0Q-Nj-6jj"/>
+                        <outlet property="descriptionOperation" destination="q6m-9M-Bup" id="JvI-mi-k8D"/>
+                        <outlet property="descriptorStatus" destination="v6D-ap-77m" id="GMV-2M-juK"/>
                         <outlet property="expenseCategory" destination="FyM-Zs-RVo" id="bBu-xF-ytR"/>
                         <outlet property="incomeCategory" destination="JmD-O4-gf2" id="GEz-K7-rvU"/>
                         <outlet property="indicatorView" destination="cf8-9V-ca4" id="AVU-os-7nQ"/>
+                        <outlet property="paymentStatus" destination="Z1u-6C-sDs" id="vqO-Ce-I3t"/>
+                        <outlet property="valueOperation" destination="GNP-aX-EbG" id="Neu-h0-BCN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yR7-j2-pqP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -75,6 +174,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zIC-mp-vYa">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

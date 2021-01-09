@@ -8,7 +8,11 @@
 import Foundation
 
 
-struct IncomeManager {
+class IncomeManager {
+    
+    static let shared: IncomeManager = {
+        return IncomeManager()
+    }()
     
     var mockData = [Income(incomeValue: 254.54, description: "Aluguel da Maria", dateOperation: Date(), receivedStatus: true),
                     Income(incomeValue: 1300.76, description: "Salário", dateOperation: Date(), receivedStatus: false),
@@ -24,5 +28,9 @@ struct IncomeManager {
             }
         }
         return String(format: "%.2f", amount)
+    }
+    
+    private init () {
+        
     }
 }

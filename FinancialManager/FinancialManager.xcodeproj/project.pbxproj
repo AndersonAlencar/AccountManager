@@ -29,6 +29,7 @@
 		E2EC4C3025A916FD0058182E /* IncomeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EC4C2F25A916FD0058182E /* IncomeManager.swift */; };
 		E2EC4C3425A94B380058182E /* CreateAndEditOperation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2EC4C3325A94B380058182E /* CreateAndEditOperation.storyboard */; };
 		E2EC4C3725A94E990058182E /* NewOperationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EC4C3625A94E990058182E /* NewOperationViewController.swift */; };
+		E2EC4C3A25A9DAD50058182E /* FloatingLabelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EC4C3925A9DAD50058182E /* FloatingLabelInput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		E2EC4C2F25A916FD0058182E /* IncomeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeManager.swift; sourceTree = "<group>"; };
 		E2EC4C3325A94B380058182E /* CreateAndEditOperation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAndEditOperation.storyboard; sourceTree = "<group>"; };
 		E2EC4C3625A94E990058182E /* NewOperationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOperationViewController.swift; sourceTree = "<group>"; };
+		E2EC4C3925A9DAD50058182E /* FloatingLabelInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelInput.swift; sourceTree = "<group>"; };
 		EE9345263F2005367A29AEAC /* Pods_FinancialManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinancialManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				E2EC4C1B25A8EE650058182E /* Colors.swift */,
+				E2EC4C3925A9DAD50058182E /* FloatingLabelInput.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				E2EC4C3725A94E990058182E /* NewOperationViewController.swift in Sources */,
 				E2EC4C2225A8EFBA0058182E /* ExpenseManager.swift in Sources */,
 				E21DA1F525A8A2B10076B7F5 /* OperationsViewController.swift in Sources */,
+				E2EC4C3A25A9DAD50058182E /* FloatingLabelInput.swift in Sources */,
 				E21DA1DE25A88ED80076B7F5 /* Expense.swift in Sources */,
 				E21DA1FB25A8A30F0076B7F5 /* FinanceTabViewController.swift in Sources */,
 				E2EC4C2C25A8FAA20058182E /* OperationTableViewCell.swift in Sources */,

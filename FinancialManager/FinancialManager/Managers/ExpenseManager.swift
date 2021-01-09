@@ -8,7 +8,11 @@
 import Foundation
 
 
-struct ExpenseManager {
+class ExpenseManager {
+    
+    static let shared: ExpenseManager = {
+        return ExpenseManager()
+    }()
     
     var mockData = [Expense(expenseValue: 250.86, description: "Viagem pra caponga", dateOperation: Date(), paymentStatus: true),
                     Expense(expenseValue: 32.43, description: "Vinho do bom", dateOperation: Date(), paymentStatus: false),
@@ -24,4 +28,6 @@ struct ExpenseManager {
         }
         return String(format: "%.2f", amount)
     }
+    
+    private init() {}
 }
