@@ -113,6 +113,35 @@ extension OperationsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Selecionou a célula: \(indexPath.row)")
     }
+    
+//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+//        <#code#>
+//    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = deleteAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+    func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .destructive, title: "Deletar") { [self] (action, view, completion) in
+            switch segmentedOperation.selectedSegmentIndex {
+                case 0:
+                    ExpenseManager.shared.mockData.remove(at: indexPath.row)
+                    expenses = ExpenseManager.shared.mockData
+                    updateAmount()
+                default:
+                    IncomeManager.shared.mockData.remove(at: indexPath.row)
+                    incomes = IncomeManager.shared.mockData
+                    updateAmount()
+            }
+            operationsTable.reloadData()
+            completion(true)
+        }
+        
+        action.image = UIImage(named: "trash")
+        action.backgroundColor = .secondaryColor
+        return action
+    }
 }
 
 
