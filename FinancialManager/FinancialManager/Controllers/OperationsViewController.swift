@@ -20,8 +20,6 @@ class OperationsViewController: UIViewController {
     let expenses = ExpenseManager().mockData
     let incomes = IncomeManager().mockData
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
@@ -71,6 +69,13 @@ class OperationsViewController: UIViewController {
         operationsTable.separatorStyle = .none
         operationsTable.register(UINib.init(nibName: "OperationTableViewCell", bundle: nil), forCellReuseIdentifier: "OperationCellIdentifier")
     }
+    
+    @IBAction func addNewOperation(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "CreateAndEditOperation", bundle: nil)
+        let newOperationController = storyboard.instantiateViewController(withIdentifier: "OperationControllerID") as! UINavigationController
+        present(newOperationController, animated: true, completion: nil)
+    }
+    
 }
 
 

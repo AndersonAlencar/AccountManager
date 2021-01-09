@@ -27,6 +27,8 @@
 		E2EC4C2C25A8FAA20058182E /* OperationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EC4C2A25A8FAA20058182E /* OperationTableViewCell.swift */; };
 		E2EC4C2D25A8FAA20058182E /* OperationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2EC4C2B25A8FAA20058182E /* OperationTableViewCell.xib */; };
 		E2EC4C3025A916FD0058182E /* IncomeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EC4C2F25A916FD0058182E /* IncomeManager.swift */; };
+		E2EC4C3425A94B380058182E /* CreateAndEditOperation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2EC4C3325A94B380058182E /* CreateAndEditOperation.storyboard */; };
+		E2EC4C3725A94E990058182E /* NewOperationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EC4C3625A94E990058182E /* NewOperationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,8 @@
 		E2EC4C2A25A8FAA20058182E /* OperationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationTableViewCell.swift; sourceTree = "<group>"; };
 		E2EC4C2B25A8FAA20058182E /* OperationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OperationTableViewCell.xib; sourceTree = "<group>"; };
 		E2EC4C2F25A916FD0058182E /* IncomeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeManager.swift; sourceTree = "<group>"; };
+		E2EC4C3325A94B380058182E /* CreateAndEditOperation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAndEditOperation.storyboard; sourceTree = "<group>"; };
+		E2EC4C3625A94E990058182E /* NewOperationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOperationViewController.swift; sourceTree = "<group>"; };
 		EE9345263F2005367A29AEAC /* Pods_FinancialManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinancialManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -100,6 +104,7 @@
 				E21DA1E725A897240076B7F5 /* FinanceTabBar.storyboard */,
 				E21DA1EB25A899C70076B7F5 /* Operations.storyboard */,
 				E21DA1EE25A89AA00076B7F5 /* ResumeExpense.storyboard */,
+				E2EC4C3325A94B380058182E /* CreateAndEditOperation.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -110,6 +115,7 @@
 				E21DA1F425A8A2B10076B7F5 /* OperationsViewController.swift */,
 				E21DA1F725A8A2D00076B7F5 /* ResumeExpenseViewController.swift */,
 				E21DA1FA25A8A30F0076B7F5 /* FinanceTabViewController.swift */,
+				E2EC4C3625A94E990058182E /* NewOperationViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -239,6 +245,7 @@
 			files = (
 				E2B91E6225A8888600633D1A /* LaunchScreen.storyboard in Resources */,
 				E21DA1E825A897240076B7F5 /* FinanceTabBar.storyboard in Resources */,
+				E2EC4C3425A94B380058182E /* CreateAndEditOperation.storyboard in Resources */,
 				E2B91E6B25A88A3500633D1A /* GoogleService-Info.plist in Resources */,
 				E21DA1EC25A899C70076B7F5 /* Operations.storyboard in Resources */,
 				E2EC4C2D25A8FAA20058182E /* OperationTableViewCell.xib in Resources */,
@@ -298,6 +305,7 @@
 			files = (
 				E21DA1F825A8A2D00076B7F5 /* ResumeExpenseViewController.swift in Sources */,
 				E2EC4C1C25A8EE650058182E /* Colors.swift in Sources */,
+				E2EC4C3725A94E990058182E /* NewOperationViewController.swift in Sources */,
 				E2EC4C2225A8EFBA0058182E /* ExpenseManager.swift in Sources */,
 				E21DA1F525A8A2B10076B7F5 /* OperationsViewController.swift in Sources */,
 				E21DA1DE25A88ED80076B7F5 /* Expense.swift in Sources */,
