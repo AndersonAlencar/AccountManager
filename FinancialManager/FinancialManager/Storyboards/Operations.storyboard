@@ -92,7 +92,7 @@
                             <constraint firstItem="LTK-cf-Lcc" firstAttribute="height" secondItem="bW5-zZ-b3p" secondAttribute="height" multiplier="0.4" id="tbz-iS-Dl4"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Principal" id="Hgm-Vz-MR5"/>
+                    <tabBarItem key="tabBarItem" title="Principal" image="horizontal" selectedImage="horizontal" id="Hgm-Vz-MR5"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="amountOperation" destination="h3t-3Y-04R" id="6Qe-HI-GuC"/>
@@ -110,6 +110,7 @@
     </scenes>
     <resources>
         <image name="cara" width="64" height="64"/>
+        <image name="horizontal" width="32" height="32"/>
         <image name="mais3" width="64" height="64"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
