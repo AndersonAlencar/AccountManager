@@ -18,15 +18,28 @@ class NewOperationViewController: UIViewController {
     @IBOutlet weak var dateOperation: UIDatePicker!
     @IBOutlet weak var paymentStatus: UISwitch!
     @IBOutlet weak var descriptorStatus: UILabel!
+    @IBOutlet weak var centerConstraint: NSLayoutConstraint!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    var incomeLayoutAnimate: NSLayoutConstraint!
+    var expenseLayoutAnimate: NSLayoutConstraint!
+
+    
     
     weak var delegateOperation: OperationsViewController!
     
-    var flag = true
+    var didAnimated = false
     var operation = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        incomeLayoutAnimate = NSLayoutConstraint(item: indicatorView as Any, attribute: .centerX, relatedBy: .equal, toItem: incomeCategory, attribute: .centerX, multiplier: 1.0, constant: 1)
+        expenseLayoutAnimate = NSLayoutConstraint(item: indicatorView as Any, attribute: .centerX, relatedBy: .equal, toItem: expenseCategory, attribute: .centerX, multiplier: 1.0, constant: 1)
         overrideUserInterfaceStyle = .light
+        saveButton.isEnabled = false
+        valueOperation.delegate = self
+        
+        
         self.view.backgroundColor = .primaryColor
         self.isModalInPresentation = true
         borderTF()
@@ -53,47 +66,41 @@ class NewOperationViewController: UIViewController {
     }
     
     func setDatePicker() {
-        //dateOperation.maximumDate = Date()
-        //dateOperation.preferredDatePickerStyle = .compact
-        //dateOperation.tintColor = .incomeSegmented
         dateOperation.backgroundColor = .white
-//        let loc = Locale(identifier: "pt-br")
-//        dateOperation.locale = loc
-//        dateOperation.calendar.locale = loc
-        
     }
     
-    
     @IBAction func selectExpense(_ sender: UIButton) {
-        descriptorStatus.text = "Pago"
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut) {
-            self.indicatorView.center.x = self.expenseCategory.center.x
-            self.indicatorView.layoutIfNeeded()
-            self.indicatorView.superview?.layoutIfNeeded()
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) { [self] in
+            if !didAnimated {
+                self.view.removeConstraint(self.centerConstraint)
+                didAnimated = true
+            } else {
+                self.view.removeConstraint(self.incomeLayoutAnimate)
+            }
+            self.view.addConstraint(expenseLayoutAnimate)
+            self.view.layoutIfNeeded()
         } completion: { [self] finished in
             operation = 0
+            descriptorStatus.text = "Pago"
         }
     }
     
     
     @IBAction func selectIncome(_ sender: Any) {
-        descriptorStatus.text = "Recebido"
-        UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseOut) {
-            self.indicatorView.center.x = self.incomeCategory.center.x
-            self.indicatorView.layoutIfNeeded()
-            self.indicatorView.superview?.layoutIfNeeded()
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) { [self] in
+            //self.indicatorView.center.x = self.incomeCategory.center.x
+            if !didAnimated {
+                view.removeConstraint(self.centerConstraint)
+                didAnimated = true
+            } else {
+                self.view.removeConstraint(self.expenseLayoutAnimate)
+            }
+            self.view.addConstraint(self.incomeLayoutAnimate)
+            self.view.layoutIfNeeded()
         } completion: { [self] finished in
             operation = 1
-            switch flag {
-                case true:
-                    incomeCategory.sendActions(for: .touchUpInside)
-                    flag = false
-                default:
-                    flag = true
-            }
+            descriptorStatus.text = "Recebido"
         }
-        
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -138,5 +145,16 @@ class NewOperationViewController: UIViewController {
         delegateOperation.reloadData()
         dismiss(animated: true, completion: nil)
 
+    }
+}
+
+
+extension NewOperationViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.text!.isEmpty || textField.text == "" {
+            saveButton.isEnabled = false
+        } else {
+            saveButton.isEnabled = true
+        }
     }
 }

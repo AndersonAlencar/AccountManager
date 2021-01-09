@@ -152,6 +152,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="centerConstraint" destination="EUX-Ev-7jN" id="MUa-Mf-eyZ"/>
                         <outlet property="dateOperation" destination="JYc-T6-lcd" id="k0Q-Nj-6jj"/>
                         <outlet property="descriptionOperation" destination="q6m-9M-Bup" id="JvI-mi-k8D"/>
                         <outlet property="descriptorStatus" destination="v6D-ap-77m" id="GMV-2M-juK"/>
@@ -159,6 +160,7 @@
                         <outlet property="incomeCategory" destination="JmD-O4-gf2" id="GEz-K7-rvU"/>
                         <outlet property="indicatorView" destination="cf8-9V-ca4" id="AVU-os-7nQ"/>
                         <outlet property="paymentStatus" destination="Z1u-6C-sDs" id="vqO-Ce-I3t"/>
+                        <outlet property="saveButton" destination="y3q-0D-vfU" id="K1X-uK-ytp"/>
                         <outlet property="valueOperation" destination="GNP-aX-EbG" id="Neu-h0-BCN"/>
                     </connections>
                 </viewController>
