@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
 
 class OperationsViewController: UIViewController {
     
@@ -16,6 +18,10 @@ class OperationsViewController: UIViewController {
     @IBOutlet weak var newOperation: UIButton!
     @IBOutlet weak var segmentedOperation: UISegmentedControl!
     @IBOutlet weak var operationsTable: UITableView!
+    
+    let expenseManager = ExpenseManager.shared
+    let incomeManager = IncomeManager.shared
+    var expenseListener: ListenerRegistration!
     
     var expenses = ExpenseManager.shared.mockData
     var incomes = IncomeManager.shared.mockData
@@ -29,13 +35,37 @@ class OperationsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateAmount()
+        let query = expenseManager.collectionReference.order(by: "date")
+        expenseListener = query.addSnapshotListener  { [self] (querySnapchot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                expenses.removeAll()
+                expenseManager.documentReferences.removeAll()
+                var newExpenses = [Expense]()
+                for document in querySnapchot!.documents {
+                    let expense = Expense(dict: document.data())
+                    //expenseManager.mockData.append(expense)
+                    newExpenses.append(expense)
+                    expenseManager.documentReferences.append(document.documentID)
+                }
+                expenses = newExpenses
+                operationsTable.reloadData()
+                updateAmount()
+            }
+        }
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        expenseListener.remove()
     }
     
     func updateAmount() {
         switch segmentedOperation.selectedSegmentIndex {
             case 0:
-                amountOperation.text = "R$ \(ExpenseManager.shared.totalExpenses())"
+                amountOperation.text = "R$ \(expenseManager.totalExpenses(expenses: expenses))"
             default:
                 amountOperation.text = "R$ \(IncomeManager.shared.totalIncomes())"
         }
@@ -53,8 +83,8 @@ class OperationsViewController: UIViewController {
         switch segmentedOperation.selectedSegmentIndex {
             case 0:
                 segmentedOperation.selectedSegmentTintColor = .expenseSegmented
-                titleOperation.text = "Despesas Totais"
-                amountOperation.text = "R$ \(ExpenseManager.shared.totalExpenses())"
+                titleOperation.text = "Despesas Pendentes"
+                amountOperation.text = "R$ \(expenseManager.totalExpenses(expenses: expenses))"
             default:
                 segmentedOperation.selectedSegmentTintColor = .incomeSegmented
                 titleOperation.text = "Receitas Totais"
@@ -114,10 +144,6 @@ extension OperationsViewController: UITableViewDelegate, UITableViewDataSource {
         print("Selecionou a célula: \(indexPath.row)")
     }
     
-//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-//        <#code#>
-//    }
-    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = deleteAction(at: indexPath)
         return UISwipeActionsConfiguration(actions: [delete])
@@ -126,9 +152,10 @@ extension OperationsViewController: UITableViewDelegate, UITableViewDataSource {
         let action = UIContextualAction(style: .destructive, title: "Deletar") { [self] (action, view, completion) in
             switch segmentedOperation.selectedSegmentIndex {
                 case 0:
-                    ExpenseManager.shared.mockData.remove(at: indexPath.row)
-                    expenses = ExpenseManager.shared.mockData
-                    updateAmount()
+                    expenseManager.deleteExpense(documentID: expenseManager.documentReferences[indexPath.row])
+//                    ExpenseManager.shared.mockData.remove(at: indexPath.row)
+//                    expenses = ExpenseManager.shared.mockData
+//                    updateAmount()
                 default:
                     IncomeManager.shared.mockData.remove(at: indexPath.row)
                     incomes = IncomeManager.shared.mockData

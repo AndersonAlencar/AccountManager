@@ -21,6 +21,9 @@ class NewOperationViewController: UIViewController {
     @IBOutlet weak var centerConstraint: NSLayoutConstraint!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    let expenseManager = ExpenseManager.shared
+    let incomeManager = IncomeManager.shared
+    
     var incomeLayoutAnimate: NSLayoutConstraint!
     var expenseLayoutAnimate: NSLayoutConstraint!
 
@@ -127,7 +130,9 @@ class NewOperationViewController: UIViewController {
                     }
                 }
                 let expense = Expense(expenseValue: value, description: description, dateOperation: dateOperation.date, paymentStatus: paymentStatus.isOn)
-                ExpenseManager.shared.mockData.append(expense)
+                
+                //ExpenseManager.shared.mockData.append(expense)
+                expenseManager.addNewExpense(dataExpense: expense.dictionary)
             default:
                 let formatter = NumberFormatter()
                 formatter.locale = Locale(identifier: "pt_BR")

@@ -16,9 +16,9 @@
 		E21DA1F525A8A2B10076B7F5 /* OperationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DA1F425A8A2B10076B7F5 /* OperationsViewController.swift */; };
 		E21DA1F825A8A2D00076B7F5 /* ResumeExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DA1F725A8A2D00076B7F5 /* ResumeExpenseViewController.swift */; };
 		E21DA1FB25A8A30F0076B7F5 /* FinanceTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DA1FA25A8A30F0076B7F5 /* FinanceTabViewController.swift */; };
+		E23849CD25AA876A00333AAB /* ExtensionCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23849CC25AA876A00333AAB /* ExtensionCodable.swift */; };
 		E2B91E5625A8888400633D1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B91E5525A8888400633D1A /* AppDelegate.swift */; };
 		E2B91E5825A8888400633D1A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B91E5725A8888400633D1A /* SceneDelegate.swift */; };
-		E2B91E5A25A8888400633D1A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B91E5925A8888400633D1A /* ViewController.swift */; };
 		E2B91E5F25A8888600633D1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2B91E5E25A8888600633D1A /* Assets.xcassets */; };
 		E2B91E6225A8888600633D1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2B91E6025A8888600633D1A /* LaunchScreen.storyboard */; };
 		E2B91E6B25A88A3500633D1A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2B91E6A25A88A3500633D1A /* GoogleService-Info.plist */; };
@@ -43,10 +43,10 @@
 		E21DA1F425A8A2B10076B7F5 /* OperationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsViewController.swift; sourceTree = "<group>"; };
 		E21DA1F725A8A2D00076B7F5 /* ResumeExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeExpenseViewController.swift; sourceTree = "<group>"; };
 		E21DA1FA25A8A30F0076B7F5 /* FinanceTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceTabViewController.swift; sourceTree = "<group>"; };
+		E23849CC25AA876A00333AAB /* ExtensionCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCodable.swift; sourceTree = "<group>"; };
 		E2B91E5225A8888400633D1A /* FinancialManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinancialManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2B91E5525A8888400633D1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2B91E5725A8888400633D1A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E2B91E5925A8888400633D1A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E2B91E5E25A8888600633D1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2B91E6125A8888600633D1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2B91E6325A8888600633D1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -151,7 +151,6 @@
 				E2EC4C2525A8F2AC0058182E /* TableCells */,
 				E2B91E5525A8888400633D1A /* AppDelegate.swift */,
 				E2B91E5725A8888400633D1A /* SceneDelegate.swift */,
-				E2B91E5925A8888400633D1A /* ViewController.swift */,
 				E2B91E5E25A8888600633D1A /* Assets.xcassets */,
 				E2B91E6025A8888600633D1A /* LaunchScreen.storyboard */,
 				E2B91E6325A8888600633D1A /* Info.plist */,
@@ -165,6 +164,7 @@
 			children = (
 				E2EC4C1B25A8EE650058182E /* Colors.swift */,
 				E2EC4C3925A9DAD50058182E /* FloatingLabelInput.swift */,
+				E23849CC25AA876A00333AAB /* ExtensionCodable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -312,10 +312,10 @@
 				E2EC4C2225A8EFBA0058182E /* ExpenseManager.swift in Sources */,
 				E21DA1F525A8A2B10076B7F5 /* OperationsViewController.swift in Sources */,
 				E2EC4C3A25A9DAD50058182E /* FloatingLabelInput.swift in Sources */,
+				E23849CD25AA876A00333AAB /* ExtensionCodable.swift in Sources */,
 				E21DA1DE25A88ED80076B7F5 /* Expense.swift in Sources */,
 				E21DA1FB25A8A30F0076B7F5 /* FinanceTabViewController.swift in Sources */,
 				E2EC4C2C25A8FAA20058182E /* OperationTableViewCell.swift in Sources */,
-				E2B91E5A25A8888400633D1A /* ViewController.swift in Sources */,
 				E2EC4C3025A916FD0058182E /* IncomeManager.swift in Sources */,
 				E2B91E5625A8888400633D1A /* AppDelegate.swift in Sources */,
 				E21DA1E125A891760076B7F5 /* Income.swift in Sources */,
