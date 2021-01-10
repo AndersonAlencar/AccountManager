@@ -116,31 +116,22 @@ class NewOperationViewController: UIViewController {
     }
     
     @IBAction func saveOperation(_ sender: Any) {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "pt_BR")
+        let value = formatter.number(from: valueOperation.text!) as! Double
+        var description = "Sem Descrição"
+        
+        if let desc = descriptionOperation.text{
+            if !desc.isEmpty {
+                description = desc
+            }
+        }
+        
         switch operation {
             case 0:
-                let formatter = NumberFormatter()
-                formatter.locale = Locale(identifier: "pt_BR")
-                let value = formatter.number(from: valueOperation.text!) as! Double
-                var description = "Sem Descrição"
-                
-                if let desc = descriptionOperation.text{
-                    if !desc.isEmpty {
-                        description = desc
-                    }
-                }
                 let expense = Expense(expenseValue: value, description: description, dateOperation: dateOperation.date, paymentStatus: paymentStatus.isOn)
                 expenseManager.addNewDocument(dataDocument: expense.dictionary)
             default:
-                let formatter = NumberFormatter()
-                formatter.locale = Locale(identifier: "pt_BR")
-                let value = formatter.number(from: valueOperation.text!) as! Double//Double(valueOperation.text!) ?? 0 as!
-                var description = "Sem Descrição"
-
-                if let desc = descriptionOperation.text{
-                    if !desc.isEmpty {
-                        description = desc
-                    }
-                }
                 let income = Income(incomeValue: value, description: description, dateOperation: dateOperation.date, receivedStatus: paymentStatus.isOn)
                 incomeManager.addNewDocument(dataDocument: income.dictionary)
         }
