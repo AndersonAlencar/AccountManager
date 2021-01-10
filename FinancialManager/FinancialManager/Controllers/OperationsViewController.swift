@@ -22,9 +22,10 @@ class OperationsViewController: UIViewController {
     let expenseManager = ExpenseManager.shared
     let incomeManager = IncomeManager.shared
     var expenseListener: ListenerRegistration!
+    var incomeListener: ListenerRegistration!
     
-    var expenses = ExpenseManager.shared.mockData
-    var incomes = IncomeManager.shared.mockData
+    var expenses = [Expense]()
+    var incomes = [Income]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +36,8 @@ class OperationsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let query = expenseManager.collectionReference.order(by: "date")
-        expenseListener = query.addSnapshotListener  { [self] (querySnapchot, error) in
+        let queryExpense = expenseManager.collectionReference.order(by: "date")
+        expenseListener = queryExpense.addSnapshotListener  { [self] (querySnapchot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
             } else {
@@ -45,21 +46,43 @@ class OperationsViewController: UIViewController {
                 var newExpenses = [Expense]()
                 for document in querySnapchot!.documents {
                     let expense = Expense(dict: document.data())
-                    //expenseManager.mockData.append(expense)
                     newExpenses.append(expense)
                     expenseManager.documentReferences.append(document.documentID)
                 }
                 expenses = newExpenses
-                operationsTable.reloadData()
+                if segmentedOperation.selectedSegmentIndex == 0 {
+                    operationsTable.reloadData()
+                }
                 updateAmount()
             }
         }
         
+        let queryIncome = incomeManager.collectionReference.order(by: "date")
+        incomeListener = queryIncome.addSnapshotListener  { [self] (querySnapchot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                incomes.removeAll()
+                incomeManager.documentReferences.removeAll()
+                var newIncomes = [Income]()
+                for document in querySnapchot!.documents {
+                    let income = Income(dict: document.data())
+                    newIncomes.append(income)
+                    incomeManager.documentReferences.append(document.documentID)
+                }
+                incomes = newIncomes
+                if segmentedOperation.selectedSegmentIndex == 1 {
+                    operationsTable.reloadData()
+                }
+                updateAmount()
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         expenseListener.remove()
+        incomeListener.remove()
     }
     
     func updateAmount() {
@@ -67,7 +90,7 @@ class OperationsViewController: UIViewController {
             case 0:
                 amountOperation.text = "R$ \(expenseManager.totalExpenses(expenses: expenses))"
             default:
-                amountOperation.text = "R$ \(IncomeManager.shared.totalIncomes())"
+                amountOperation.text = "R$ \(incomeManager.totalIncomes(incomes: incomes))"
         }
     }
     
@@ -87,8 +110,8 @@ class OperationsViewController: UIViewController {
                 amountOperation.text = "R$ \(expenseManager.totalExpenses(expenses: expenses))"
             default:
                 segmentedOperation.selectedSegmentTintColor = .incomeSegmented
-                titleOperation.text = "Receitas Totais"
-                amountOperation.text = "R$ \(IncomeManager.shared.totalIncomes())"
+                titleOperation.text = "Receitas Recebidas"
+                amountOperation.text = "R$ \(incomeManager.totalIncomes(incomes: incomes))"
 
         }
         operationsTable.reloadData()
@@ -106,16 +129,10 @@ class OperationsViewController: UIViewController {
     @IBAction func addNewOperation(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "CreateAndEditOperation", bundle: nil)
         let newOperationController = storyboard.instantiateViewController(withIdentifier: "OperationControllerID") as! UINavigationController
-        let controller = newOperationController.topViewController as! NewOperationViewController
-        controller.delegateOperation = self
         present(newOperationController, animated: true, completion: nil)
     }
     
 }
-
-
-
-
 
 
 extension OperationsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -153,33 +170,13 @@ extension OperationsViewController: UITableViewDelegate, UITableViewDataSource {
             switch segmentedOperation.selectedSegmentIndex {
                 case 0:
                     expenseManager.deleteExpense(documentID: expenseManager.documentReferences[indexPath.row])
-//                    ExpenseManager.shared.mockData.remove(at: indexPath.row)
-//                    expenses = ExpenseManager.shared.mockData
-//                    updateAmount()
                 default:
-                    IncomeManager.shared.mockData.remove(at: indexPath.row)
-                    incomes = IncomeManager.shared.mockData
-                    updateAmount()
+                    incomeManager.deleteIncome(documentID: incomeManager.documentReferences[indexPath.row])
             }
-            operationsTable.reloadData()
             completion(true)
         }
-        
         action.image = UIImage(named: "trash")
         action.backgroundColor = .secondaryColor
         return action
-    }
-}
-
-
-extension OperationsViewController {
-    func reloadData() {
-        updateAmount()
-        expenses = ExpenseManager.shared.mockData
-        incomes = IncomeManager.shared.mockData
-        DispatchQueue.main.async {
-            self.operationsTable.reloadData()
-
-        }
     }
 }

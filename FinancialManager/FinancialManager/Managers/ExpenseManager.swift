@@ -11,22 +11,14 @@ import FirebaseFirestore
 
 
 class ExpenseManager {
-    
-    //firebase persistense
     private let dataBase = Firestore.firestore()
-    
     let collectionReference: CollectionReference!
+    var documentReferences = [String]()
     
     static let shared: ExpenseManager = {
         return ExpenseManager()
     }()
-    
-    var mockData = [Expense]()//Expense(expenseValue: 250.86, description: "Viagem para caponga", dateOperation: Date(), paymentStatus: true),
-                    //Expense(expenseValue: 32.43, description: "Vinho do bom", dateOperation: Date(), paymentStatus: false),
-                    //Expense(expenseValue: 76.98, description: "Jantar com o viado", dateOperation: Date(), paymentStatus: true),
-                    //Expense(expenseValue: 233.23, description: "Fatura Nubank", dateOperation: Date(), paymentStatus: false)]
-    var documentReferences = [String]()
-    
+
     private init() {
         collectionReference = dataBase.collection("expenseColletion")
     }
@@ -52,22 +44,7 @@ class ExpenseManager {
         }
     }
     
-    func getAllExpenses() {
-        let query = collectionReference.order(by: "date")
-        query.getDocuments { (querySnapchot, error) in
-            if let error = error {
-                print("Error getting documents: \(error)")
-            } else {
-                for document in querySnapchot!.documents {
-                    let expense = Expense(dict: document.data())
-                    self.mockData.append(expense)
-                    self.documentReferences.append(document.documentID)
-                }
-            }
-        }
-    }
-    
-    func editExpense(dataExpense: [String:Any], documentID: String) {
+    func updateExpense(dataExpense: [String:Any], documentID: String) {
         let docReference = collectionReference.document(documentID)
         docReference.setData(dataExpense) { (error) in
             if let error = error {

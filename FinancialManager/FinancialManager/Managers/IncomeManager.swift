@@ -6,31 +6,64 @@
 //
 
 import Foundation
-
+import Firebase
+import FirebaseFirestore
 
 class IncomeManager {
-    
+    private let dataBase = Firestore.firestore()
+    let collectionReference: CollectionReference!
+    var documentReferences = [String]()
+
     static let shared: IncomeManager = {
         return IncomeManager()
     }()
     
-    var mockData = [Income(incomeValue: 254.54, description: "Aluguel da Maria", dateOperation: Date(), receivedStatus: true),
-                    Income(incomeValue: 1300.76, description: "Salário", dateOperation: Date(), receivedStatus: false),
-                    Income(incomeValue: 37.67, description: "Pagamento do Felipe", dateOperation: Date(), receivedStatus: true),
-                    Income(incomeValue: 89.76, description: "Reembolso de Viagem", dateOperation: Date(), receivedStatus: false)]
+    var mockData = [Income]()
     
-    
-    func totalIncomes() -> String {
+    func totalIncomes(incomes: [Income]) -> String {
         var amount: Double = 0
-        for expense in mockData {
-            if expense.receivedStatus == true {
-                amount += expense.value
+        for income in incomes {
+            if income.receivedStatus == true {
+                amount += income.value
             }
         }
         return String(format: "%.2f", amount)
     }
     
     private init () {
-        
+        collectionReference = dataBase.collection("incomeColletion")
+    }
+    
+    func addNewIncome(dataIncome: [String:Any]) {
+        var ref: DocumentReference? = nil
+        ref = collectionReference.addDocument(data: dataIncome) { (error) in
+            if let error = error {
+                print("Error adding document: \(error)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+    }
+    
+    func updateIncome(dataExpense: [String:Any], documentID: String) {
+        let docReference = collectionReference.document(documentID)
+        docReference.setData(dataExpense) { (error) in
+            if let error = error {
+                print("Error update document: \(error)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+    }
+    
+    func deleteIncome(documentID: String) {
+        let docRefence = collectionReference.document(documentID)
+        docRefence.delete { (error) in
+            if let error = error {
+                print("Error removing document: \(error)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
     }
 }

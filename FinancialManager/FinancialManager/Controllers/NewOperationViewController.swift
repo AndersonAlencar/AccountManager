@@ -26,10 +26,6 @@ class NewOperationViewController: UIViewController {
     
     var incomeLayoutAnimate: NSLayoutConstraint!
     var expenseLayoutAnimate: NSLayoutConstraint!
-
-    
-    
-    weak var delegateOperation: OperationsViewController!
     
     var didAnimated = false
     var operation = 0
@@ -48,8 +44,8 @@ class NewOperationViewController: UIViewController {
         borderTF()
         setDatePicker()
         indicatorView.layer.cornerRadius = 4
-        expenseCategory.setTitleColor(.expenseTextColor, for: .normal)
-        incomeCategory.setTitleColor(.incomeSegmented, for: .normal)
+        expenseCategory.setTitleColor(.expenseSegmented, for: .normal)
+        incomeCategory.setTitleColor(.lightGray, for: .normal)
     }
     
     func borderTF(){
@@ -85,6 +81,8 @@ class NewOperationViewController: UIViewController {
         } completion: { [self] finished in
             operation = 0
             descriptorStatus.text = "Pago"
+            incomeCategory.setTitleColor(.lightGray, for: .normal)
+            expenseCategory.setTitleColor(.expenseSegmented, for: .normal)
         }
     }
     
@@ -103,6 +101,8 @@ class NewOperationViewController: UIViewController {
         } completion: { [self] finished in
             operation = 1
             descriptorStatus.text = "Recebido"
+            incomeCategory.setTitleColor(.incomeSegmented, for: .normal)
+            expenseCategory.setTitleColor(.lightGray, for: .normal)
         }
     }
     
@@ -120,36 +120,31 @@ class NewOperationViewController: UIViewController {
             case 0:
                 let formatter = NumberFormatter()
                 formatter.locale = Locale(identifier: "pt_BR")
-
-                let value = formatter.number(from: valueOperation.text!) as! Double//Double(valueOperation.text!) ?? 0 as!
-                
+                let value = formatter.number(from: valueOperation.text!) as! Double
                 var description = "Sem Descrição"
+                
                 if let desc = descriptionOperation.text{
                     if !desc.isEmpty {
                         description = desc
                     }
                 }
                 let expense = Expense(expenseValue: value, description: description, dateOperation: dateOperation.date, paymentStatus: paymentStatus.isOn)
-                
-                //ExpenseManager.shared.mockData.append(expense)
                 expenseManager.addNewExpense(dataExpense: expense.dictionary)
             default:
                 let formatter = NumberFormatter()
                 formatter.locale = Locale(identifier: "pt_BR")
                 let value = formatter.number(from: valueOperation.text!) as! Double//Double(valueOperation.text!) ?? 0 as!
-                
                 var description = "Sem Descrição"
+
                 if let desc = descriptionOperation.text{
                     if !desc.isEmpty {
                         description = desc
                     }
                 }
                 let income = Income(incomeValue: value, description: description, dateOperation: dateOperation.date, receivedStatus: paymentStatus.isOn)
-                IncomeManager.shared.mockData.append(income)
+                incomeManager.addNewIncome(dataIncome: income.dictionary)
         }
-        delegateOperation.reloadData()
         dismiss(animated: true, completion: nil)
-
     }
 }
 
