@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UlA-mZ-60Y">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Edit Operation View Controller-->
+        <scene sceneID="lmu-aZ-UZF">
+            <objects>
+                <viewController id="dqv-2Y-2Pg" customClass="EditOperationViewController" customModule="FinancialManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2nA-KJ-6Kq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f1P-dy-FhE" customClass="FloatingLabelInput" customModule="FinancialManager" customModuleProvider="target">
+                                <rect key="frame" x="20" y="148" width="186.5" height="36"/>
+                                <color key="textColor" systemColor="systemGray6Color"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="_placeholder" value="Valor"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="activeBorderColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eC0-qs-CV4" customClass="FloatingLabelInput" customModule="FinancialManager" customModuleProvider="target">
+                                <rect key="frame" x="20" y="229" width="389" height="34"/>
+                                <color key="textColor" systemColor="systemGray6Color"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="_placeholder" value="Descrição"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="activeBorderColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGR-bi-Kba">
+                                <rect key="frame" x="20" y="293" width="59" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="var-Mz-Ql5">
+                                <rect key="frame" x="20" y="322" width="171" height="44"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="LGg-IF-TbP"/>
+                                    <constraint firstAttribute="width" constant="171" id="uoI-1d-GFq"/>
+                                </constraints>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="631191600">
+                                    <!--2021-01-01 11:00:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="662641200">
+                                    <!--2021-12-31 11:00:00 +0000-->
+                                </date>
+                                <locale key="locale" localeIdentifier="pt_BR"/>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5B5-1y-cZA">
+                                <rect key="frame" x="20" y="386" width="39" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B4c-4r-BgI">
+                                <rect key="frame" x="335" y="381" width="51" height="31"/>
+                            </switch>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VbD-TO-ewi">
+                                <rect key="frame" x="20" y="429" width="374" height="1"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="OFf-Tb-rKb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="d5A-hw-woP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aGR-bi-Kba" firstAttribute="top" secondItem="eC0-qs-CV4" secondAttribute="bottom" constant="30" id="0We-5I-caC"/>
+                            <constraint firstItem="f1P-dy-FhE" firstAttribute="leading" secondItem="d5A-hw-woP" secondAttribute="leading" constant="20" id="FUk-22-nb5"/>
+                            <constraint firstItem="aGR-bi-Kba" firstAttribute="width" secondItem="2nA-KJ-6Kq" secondAttribute="width" multiplier="0.142512" id="G5U-t1-a5v"/>
+                            <constraint firstItem="aGR-bi-Kba" firstAttribute="leading" secondItem="d5A-hw-woP" secondAttribute="leading" constant="20" id="Gi2-em-pt0"/>
+                            <constraint firstItem="eC0-qs-CV4" firstAttribute="width" secondItem="2nA-KJ-6Kq" secondAttribute="width" multiplier="0.94" id="Rxw-R2-RjR"/>
+                            <constraint firstItem="f1P-dy-FhE" firstAttribute="width" secondItem="2nA-KJ-6Kq" secondAttribute="width" multiplier="0.45" id="Sqk-pF-2vU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VbD-TO-ewi" secondAttribute="trailing" id="Uld-6G-FPt"/>
+                            <constraint firstItem="VbD-TO-ewi" firstAttribute="leading" secondItem="2nA-KJ-6Kq" secondAttribute="leadingMargin" id="ZWE-B6-JX7"/>
+                            <constraint firstItem="eC0-qs-CV4" firstAttribute="leading" secondItem="d5A-hw-woP" secondAttribute="leading" constant="20" id="ab8-Zu-4G8"/>
+                            <constraint firstItem="eC0-qs-CV4" firstAttribute="top" secondItem="f1P-dy-FhE" secondAttribute="bottom" constant="45" id="dTk-wt-aQx"/>
+                            <constraint firstItem="5B5-1y-cZA" firstAttribute="top" secondItem="var-Mz-Ql5" secondAttribute="bottom" constant="20" id="gT1-GD-5Kv"/>
+                            <constraint firstItem="d5A-hw-woP" firstAttribute="trailing" secondItem="B4c-4r-BgI" secondAttribute="trailing" constant="30" id="nVL-Gh-cHE"/>
+                            <constraint firstItem="VbD-TO-ewi" firstAttribute="top" secondItem="B4c-4r-BgI" secondAttribute="bottom" constant="17" id="pYG-FO-SO6"/>
+                            <constraint firstItem="B4c-4r-BgI" firstAttribute="centerY" secondItem="5B5-1y-cZA" secondAttribute="centerY" id="plg-hF-irl"/>
+                            <constraint firstItem="var-Mz-Ql5" firstAttribute="top" secondItem="aGR-bi-Kba" secondAttribute="bottom" constant="8" id="qD1-P8-OFs"/>
+                            <constraint firstItem="f1P-dy-FhE" firstAttribute="top" secondItem="d5A-hw-woP" secondAttribute="top" constant="60" id="suG-Iu-XpS"/>
+                            <constraint firstItem="var-Mz-Ql5" firstAttribute="leading" secondItem="d5A-hw-woP" secondAttribute="leading" constant="20" id="u7j-17-QIu"/>
+                            <constraint firstItem="5B5-1y-cZA" firstAttribute="leading" secondItem="d5A-hw-woP" secondAttribute="leading" constant="20" id="wSP-Cm-JsM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="8r6-ec-Hjx">
+                        <barButtonItem key="leftBarButtonItem" title="Cancelar" id="42B-sf-ilO">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="cancelEdition:" destination="dqv-2Y-2Pg" id="KSN-lh-Xhu"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Salvar" id="VTr-ds-iwQ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="saveEdition:" destination="dqv-2Y-2Pg" id="InN-nG-FFz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="dateOperation" destination="var-Mz-Ql5" id="sHq-BV-3H4"/>
+                        <outlet property="descriptionOperation" destination="eC0-qs-CV4" id="hRa-pN-r3i"/>
+                        <outlet property="descriptorStatus" destination="5B5-1y-cZA" id="Qvq-zh-8ez"/>
+                        <outlet property="paymentStatus" destination="B4c-4r-BgI" id="XYX-gB-85I"/>
+                        <outlet property="valueOperation" destination="f1P-dy-FhE" id="z17-rg-37M"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fgc-BA-sMC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="792.75362318840587" y="127.90178571428571"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9pv-gd-Eyo">
+            <objects>
+                <navigationController storyboardIdentifier="EditOperationID" automaticallyAdjustsScrollViewInsets="NO" id="UlA-mZ-60Y" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="i3m-yb-hE4">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dqv-2Y-2Pg" kind="relationship" relationship="rootViewController" id="nvL-ih-FLo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dUC-8f-ZxD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-117.39130434782609" y="127.90178571428571"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

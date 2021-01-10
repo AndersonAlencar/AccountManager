@@ -6,22 +6,26 @@
 //
 
 import Foundation
+import Firebase
+import FirebaseFirestore
 
 
-class ExpenseManager {
+class ExpenseManager: FirebaseProtocol {
+    private let dataBase = Firestore.firestore()
+    let collectionReference: CollectionReference!
+    var documentReferences = [String]()
     
     static let shared: ExpenseManager = {
         return ExpenseManager()
     }()
+
+    private init() {
+        collectionReference = dataBase.collection("expenseColletion")
+    }
     
-    var mockData = [Expense(expenseValue: 250.86, description: "Viagem pra caponga", dateOperation: Date(), paymentStatus: true),
-                    Expense(expenseValue: 32.43, description: "Vinho do bom", dateOperation: Date(), paymentStatus: false),
-                    Expense(expenseValue: 76.98, description: "Jantar com o viado", dateOperation: Date(), paymentStatus: true),
-                    Expense(expenseValue: 233.23, description: "Fatura Nubank", dateOperation: Date(), paymentStatus: false)]
-    
-    func totalExpenses() -> String {
+    func totalExpenses(expenses: [Expense]) -> String {
         var amount: Double = 0
-        for expense in mockData {
+        for expense in expenses {
             if expense.paymentStatus == false {
                 amount += expense.value
             }
@@ -29,5 +33,36 @@ class ExpenseManager {
         return String(format: "%.2f", amount)
     }
     
-    private init() {}
+    func addNewDocument(dataDocument dataExpense: [String:Any]) {
+        var ref: DocumentReference? = nil
+        ref = collectionReference.addDocument(data: dataExpense) { (error) in
+            if let error = error {
+                print("Error adding document: \(error)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+    }
+    
+    func updateDocument(dataDocument dataExpense: [String:Any], documentID: String) {
+        let docReference = collectionReference.document(documentID)
+        docReference.setData(dataExpense) { (error) in
+            if let error = error {
+                print("Error update document: \(error)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+    }
+    
+    func deleteDocument(documentID: String) {
+        let docRefence = collectionReference.document(documentID)
+        docRefence.delete { (error) in
+            if let error = error {
+                print("Error removing document: \(error)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+    }
 }

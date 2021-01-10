@@ -7,5 +7,5 @@ target 'FinancialManager' do
 
   # Pods for FinancialManager
   pod 'Firebase/Analytics'
-
+  pod 'Firebase/Firestore'
 end

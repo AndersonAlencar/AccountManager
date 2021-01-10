@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
 
 class OperationsViewController: UIViewController {
     
@@ -17,8 +19,13 @@ class OperationsViewController: UIViewController {
     @IBOutlet weak var segmentedOperation: UISegmentedControl!
     @IBOutlet weak var operationsTable: UITableView!
     
-    var expenses = ExpenseManager.shared.mockData
-    var incomes = IncomeManager.shared.mockData
+    let expenseManager = ExpenseManager.shared
+    let incomeManager = IncomeManager.shared
+    var expenseListener: ListenerRegistration!
+    var incomeListener: ListenerRegistration!
+    
+    var expenses = [Expense]()
+    var incomes = [Income]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,15 +36,61 @@ class OperationsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateAmount()
+        let queryExpense = expenseManager.collectionReference.order(by: "date")
+        expenseListener = queryExpense.addSnapshotListener  { [self] (querySnapchot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                expenses.removeAll()
+                expenseManager.documentReferences.removeAll()
+                var newExpenses = [Expense]()
+                for document in querySnapchot!.documents {
+                    let expense = Expense(dict: document.data())
+                    newExpenses.append(expense)
+                    expenseManager.documentReferences.append(document.documentID)
+                }
+                expenses = newExpenses
+                if segmentedOperation.selectedSegmentIndex == 0 {
+                    operationsTable.reloadData()
+                }
+                updateAmount()
+            }
+        }
+        
+        let queryIncome = incomeManager.collectionReference.order(by: "date")
+        incomeListener = queryIncome.addSnapshotListener  { [self] (querySnapchot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                incomes.removeAll()
+                incomeManager.documentReferences.removeAll()
+                var newIncomes = [Income]()
+                for document in querySnapchot!.documents {
+                    let income = Income(dict: document.data())
+                    newIncomes.append(income)
+                    incomeManager.documentReferences.append(document.documentID)
+                }
+                incomes = newIncomes
+                if segmentedOperation.selectedSegmentIndex == 1 {
+                    operationsTable.reloadData()
+                }
+                updateAmount()
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        expenseListener.remove()
+        incomeListener.remove()
     }
     
     func updateAmount() {
         switch segmentedOperation.selectedSegmentIndex {
             case 0:
-                amountOperation.text = "R$ \(ExpenseManager.shared.totalExpenses())"
+                amountOperation.text = "R$ \(expenseManager.totalExpenses(expenses: expenses))".replacingOccurrences(of: ".", with: ",")
             default:
-                amountOperation.text = "R$ \(IncomeManager.shared.totalIncomes())"
+                amountOperation.text = "R$ \(incomeManager.totalIncomes(incomes: incomes))".replacingOccurrences(of: ".", with: ",")
         }
     }
     
@@ -53,12 +106,12 @@ class OperationsViewController: UIViewController {
         switch segmentedOperation.selectedSegmentIndex {
             case 0:
                 segmentedOperation.selectedSegmentTintColor = .expenseSegmented
-                titleOperation.text = "Despesas Totais"
-                amountOperation.text = "R$ \(ExpenseManager.shared.totalExpenses())"
+                titleOperation.text = "Despesas Pendentes"
+                amountOperation.text = "R$ \(expenseManager.totalExpenses(expenses: expenses))"
             default:
                 segmentedOperation.selectedSegmentTintColor = .incomeSegmented
-                titleOperation.text = "Receitas Totais"
-                amountOperation.text = "R$ \(IncomeManager.shared.totalIncomes())"
+                titleOperation.text = "Receitas Recebidas"
+                amountOperation.text = "R$ \(incomeManager.totalIncomes(incomes: incomes))"
 
         }
         operationsTable.reloadData()
@@ -74,18 +127,12 @@ class OperationsViewController: UIViewController {
     }
     
     @IBAction func addNewOperation(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "CreateAndEditOperation", bundle: nil)
+        let storyboard = UIStoryboard(name: "CreateNewOperation", bundle: nil)
         let newOperationController = storyboard.instantiateViewController(withIdentifier: "OperationControllerID") as! UINavigationController
-        let controller = newOperationController.topViewController as! NewOperationViewController
-        controller.delegateOperation = self
         present(newOperationController, animated: true, completion: nil)
     }
     
 }
-
-
-
-
 
 
 extension OperationsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -111,48 +158,36 @@ extension OperationsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Selecionou a célula: \(indexPath.row)")
+        let storyboard = UIStoryboard(name: "EditOperation", bundle: nil)
+        let editOperationController = storyboard.instantiateViewController(withIdentifier: "EditOperationID") as! UINavigationController
+        let rootController = editOperationController.topViewController as! EditOperationViewController
+        rootController.index = indexPath.row
+        if segmentedOperation.selectedSegmentIndex == 0 {
+            rootController.documentOperation = expenses[indexPath.row]
+        } else {
+            rootController.documentOperation = incomes[indexPath.row]
+
+        }
+        present(editOperationController, animated: true, completion: nil)
     }
-    
-//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-//        <#code#>
-//    }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = deleteAction(at: indexPath)
         return UISwipeActionsConfiguration(actions: [delete])
     }
+
     func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .destructive, title: "Deletar") { [self] (action, view, completion) in
             switch segmentedOperation.selectedSegmentIndex {
                 case 0:
-                    ExpenseManager.shared.mockData.remove(at: indexPath.row)
-                    expenses = ExpenseManager.shared.mockData
-                    updateAmount()
+                    expenseManager.deleteDocument(documentID: expenseManager.documentReferences[indexPath.row])
                 default:
-                    IncomeManager.shared.mockData.remove(at: indexPath.row)
-                    incomes = IncomeManager.shared.mockData
-                    updateAmount()
+                    incomeManager.deleteDocument(documentID: incomeManager.documentReferences[indexPath.row])
             }
-            operationsTable.reloadData()
             completion(true)
         }
-        
         action.image = UIImage(named: "trash")
         action.backgroundColor = .secondaryColor
         return action
-    }
-}
-
-
-extension OperationsViewController {
-    func reloadData() {
-        updateAmount()
-        expenses = ExpenseManager.shared.mockData
-        incomes = IncomeManager.shared.mockData
-        DispatchQueue.main.async {
-            self.operationsTable.reloadData()
-
-        }
     }
 }

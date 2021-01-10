@@ -17,7 +17,7 @@
                         <viewLayoutGuide key="safeArea" id="1tv-Ny-thk"/>
                         <color key="backgroundColor" red="0.79319478304750191" green="1" blue="0.62364441384277036" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Balanço" image="balanço" selectedImage="balanço" id="8Tu-oy-gW8"/>
+                    <tabBarItem key="tabBarItem" title="Balanço" image="balanco" selectedImage="balanco" id="8Tu-oy-gW8"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rfL-qv-TLB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -26,6 +26,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="balanço" width="32" height="32"/>
+        <image name="balanco" width="32" height="32"/>
     </resources>
 </document>
