@@ -8,7 +8,8 @@
 import Foundation
 
 
-class Expense: Codable {
+class Expense: Codable, ModelProtocol {
+    
     var value: Double
     var description: String
     var date: Date
@@ -31,4 +32,8 @@ class Expense: Codable {
         let dc = dict["date"] as! Double
         self.init(expenseValue: dict["value"] as! Double, description: dict["description"] as! String, dateOperation: Date(timeIntervalSinceReferenceDate: dc), paymentStatus: paymentStatus)
     }
+    
+//    func documentInformations(at index: Int) -> (value: Double, description: String, date: Date, statusOperation: Bool, index: Int) {
+//        return (self.value,self.description,self.date,self.paymentStatus,index)
+//    }
 }

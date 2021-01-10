@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 
-class IncomeManager {
+class IncomeManager: FirebaseProtocol {
     private let dataBase = Firestore.firestore()
     let collectionReference: CollectionReference!
     var documentReferences = [String]()
@@ -34,7 +34,7 @@ class IncomeManager {
         collectionReference = dataBase.collection("incomeColletion")
     }
     
-    func addNewIncome(dataIncome: [String:Any]) {
+    func addNewDocument(dataDocument dataIncome: [String:Any]) {
         var ref: DocumentReference? = nil
         ref = collectionReference.addDocument(data: dataIncome) { (error) in
             if let error = error {
@@ -45,7 +45,7 @@ class IncomeManager {
         }
     }
     
-    func updateIncome(dataExpense: [String:Any], documentID: String) {
+    func updateDocument(dataDocument dataExpense: [String:Any], documentID: String) {
         let docReference = collectionReference.document(documentID)
         docReference.setData(dataExpense) { (error) in
             if let error = error {
@@ -56,7 +56,7 @@ class IncomeManager {
         }
     }
     
-    func deleteIncome(documentID: String) {
+    func deleteDocument(documentID: String) {
         let docRefence = collectionReference.document(documentID)
         docRefence.delete { (error) in
             if let error = error {

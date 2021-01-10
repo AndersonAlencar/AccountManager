@@ -88,9 +88,9 @@ class OperationsViewController: UIViewController {
     func updateAmount() {
         switch segmentedOperation.selectedSegmentIndex {
             case 0:
-                amountOperation.text = "R$ \(expenseManager.totalExpenses(expenses: expenses))"
+                amountOperation.text = "R$ \(expenseManager.totalExpenses(expenses: expenses))".replacingOccurrences(of: ".", with: ",")
             default:
-                amountOperation.text = "R$ \(incomeManager.totalIncomes(incomes: incomes))"
+                amountOperation.text = "R$ \(incomeManager.totalIncomes(incomes: incomes))".replacingOccurrences(of: ".", with: ",")
         }
     }
     
@@ -127,7 +127,7 @@ class OperationsViewController: UIViewController {
     }
     
     @IBAction func addNewOperation(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "CreateAndEditOperation", bundle: nil)
+        let storyboard = UIStoryboard(name: "CreateNewOperation", bundle: nil)
         let newOperationController = storyboard.instantiateViewController(withIdentifier: "OperationControllerID") as! UINavigationController
         present(newOperationController, animated: true, completion: nil)
     }
@@ -158,20 +158,31 @@ extension OperationsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Selecionou a célula: \(indexPath.row)")
+        let storyboard = UIStoryboard(name: "EditOperation", bundle: nil)
+        let editOperationController = storyboard.instantiateViewController(withIdentifier: "EditOperationID") as! UINavigationController
+        let rootController = editOperationController.topViewController as! EditOperationViewController
+        rootController.index = indexPath.row
+        if segmentedOperation.selectedSegmentIndex == 0 {
+            rootController.documentOperation = expenses[indexPath.row]
+        } else {
+            rootController.documentOperation = incomes[indexPath.row]
+
+        }
+        present(editOperationController, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = deleteAction(at: indexPath)
         return UISwipeActionsConfiguration(actions: [delete])
     }
+
     func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .destructive, title: "Deletar") { [self] (action, view, completion) in
             switch segmentedOperation.selectedSegmentIndex {
                 case 0:
-                    expenseManager.deleteExpense(documentID: expenseManager.documentReferences[indexPath.row])
+                    expenseManager.deleteDocument(documentID: expenseManager.documentReferences[indexPath.row])
                 default:
-                    incomeManager.deleteIncome(documentID: incomeManager.documentReferences[indexPath.row])
+                    incomeManager.deleteDocument(documentID: incomeManager.documentReferences[indexPath.row])
             }
             completion(true)
         }

@@ -29,7 +29,7 @@ class OperationTableViewCell: UITableViewCell {
     
     func configureCell(descriptionOperation: String, value: Double, date: Date, statusOperation: Bool) {
         self.descriptionOperation.text = descriptionOperation
-        self.value.text = "R$ \(value)"
+        self.value.text = "R$ \(value)".replacingOccurrences(of: ".", with: ",")
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yy"
         let dateFormatted = formatter.string(from: date)

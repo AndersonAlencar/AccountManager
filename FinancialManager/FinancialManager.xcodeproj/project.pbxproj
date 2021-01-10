@@ -17,6 +17,10 @@
 		E21DA1F825A8A2D00076B7F5 /* ResumeExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DA1F725A8A2D00076B7F5 /* ResumeExpenseViewController.swift */; };
 		E21DA1FB25A8A30F0076B7F5 /* FinanceTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DA1FA25A8A30F0076B7F5 /* FinanceTabViewController.swift */; };
 		E23849CD25AA876A00333AAB /* ExtensionCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23849CC25AA876A00333AAB /* ExtensionCodable.swift */; };
+		E287631425AB4B14006FC9D3 /* EditOperation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E287631325AB4B14006FC9D3 /* EditOperation.storyboard */; };
+		E287631725AB5072006FC9D3 /* EditOperationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287631625AB5072006FC9D3 /* EditOperationViewController.swift */; };
+		E287631A25AB5237006FC9D3 /* FirebaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287631925AB5237006FC9D3 /* FirebaseProtocol.swift */; };
+		E287631D25AB5A05006FC9D3 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287631C25AB5A05006FC9D3 /* ModelProtocol.swift */; };
 		E2B91E5625A8888400633D1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B91E5525A8888400633D1A /* AppDelegate.swift */; };
 		E2B91E5825A8888400633D1A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B91E5725A8888400633D1A /* SceneDelegate.swift */; };
 		E2B91E5F25A8888600633D1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2B91E5E25A8888600633D1A /* Assets.xcassets */; };
@@ -44,6 +48,10 @@
 		E21DA1F725A8A2D00076B7F5 /* ResumeExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeExpenseViewController.swift; sourceTree = "<group>"; };
 		E21DA1FA25A8A30F0076B7F5 /* FinanceTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceTabViewController.swift; sourceTree = "<group>"; };
 		E23849CC25AA876A00333AAB /* ExtensionCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCodable.swift; sourceTree = "<group>"; };
+		E287631325AB4B14006FC9D3 /* EditOperation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditOperation.storyboard; sourceTree = "<group>"; };
+		E287631625AB5072006FC9D3 /* EditOperationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOperationViewController.swift; sourceTree = "<group>"; };
+		E287631925AB5237006FC9D3 /* FirebaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProtocol.swift; sourceTree = "<group>"; };
+		E287631C25AB5A05006FC9D3 /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
 		E2B91E5225A8888400633D1A /* FinancialManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinancialManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2B91E5525A8888400633D1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2B91E5725A8888400633D1A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +115,7 @@
 				E21DA1EB25A899C70076B7F5 /* Operations.storyboard */,
 				E21DA1EE25A89AA00076B7F5 /* ResumeExpense.storyboard */,
 				E2EC4C3325A94B380058182E /* CreateNewOperation.storyboard */,
+				E287631325AB4B14006FC9D3 /* EditOperation.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -118,6 +127,7 @@
 				E21DA1F725A8A2D00076B7F5 /* ResumeExpenseViewController.swift */,
 				E21DA1FA25A8A30F0076B7F5 /* FinanceTabViewController.swift */,
 				E2EC4C3625A94E990058182E /* NewOperationViewController.swift */,
+				E287631625AB5072006FC9D3 /* EditOperationViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -165,6 +175,8 @@
 				E2EC4C1B25A8EE650058182E /* Colors.swift */,
 				E2EC4C3925A9DAD50058182E /* FloatingLabelInput.swift */,
 				E23849CC25AA876A00333AAB /* ExtensionCodable.swift */,
+				E287631925AB5237006FC9D3 /* FirebaseProtocol.swift */,
+				E287631C25AB5A05006FC9D3 /* ModelProtocol.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -253,6 +265,7 @@
 				E21DA1EC25A899C70076B7F5 /* Operations.storyboard in Resources */,
 				E2EC4C2D25A8FAA20058182E /* OperationTableViewCell.xib in Resources */,
 				E21DA1EF25A89AA00076B7F5 /* ResumeExpense.storyboard in Resources */,
+				E287631425AB4B14006FC9D3 /* EditOperation.storyboard in Resources */,
 				E2B91E5F25A8888600633D1A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,11 +323,14 @@
 				E2EC4C1C25A8EE650058182E /* Colors.swift in Sources */,
 				E2EC4C3725A94E990058182E /* NewOperationViewController.swift in Sources */,
 				E2EC4C2225A8EFBA0058182E /* ExpenseManager.swift in Sources */,
+				E287631A25AB5237006FC9D3 /* FirebaseProtocol.swift in Sources */,
 				E21DA1F525A8A2B10076B7F5 /* OperationsViewController.swift in Sources */,
 				E2EC4C3A25A9DAD50058182E /* FloatingLabelInput.swift in Sources */,
 				E23849CD25AA876A00333AAB /* ExtensionCodable.swift in Sources */,
 				E21DA1DE25A88ED80076B7F5 /* Expense.swift in Sources */,
+				E287631D25AB5A05006FC9D3 /* ModelProtocol.swift in Sources */,
 				E21DA1FB25A8A30F0076B7F5 /* FinanceTabViewController.swift in Sources */,
+				E287631725AB5072006FC9D3 /* EditOperationViewController.swift in Sources */,
 				E2EC4C2C25A8FAA20058182E /* OperationTableViewCell.swift in Sources */,
 				E2EC4C3025A916FD0058182E /* IncomeManager.swift in Sources */,
 				E2B91E5625A8888400633D1A /* AppDelegate.swift in Sources */,

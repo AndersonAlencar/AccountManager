@@ -10,7 +10,7 @@ import Firebase
 import FirebaseFirestore
 
 
-class ExpenseManager {
+class ExpenseManager: FirebaseProtocol {
     private let dataBase = Firestore.firestore()
     let collectionReference: CollectionReference!
     var documentReferences = [String]()
@@ -33,7 +33,7 @@ class ExpenseManager {
         return String(format: "%.2f", amount)
     }
     
-    func addNewExpense(dataExpense: [String:Any]) {
+    func addNewDocument(dataDocument dataExpense: [String:Any]) {
         var ref: DocumentReference? = nil
         ref = collectionReference.addDocument(data: dataExpense) { (error) in
             if let error = error {
@@ -44,7 +44,7 @@ class ExpenseManager {
         }
     }
     
-    func updateExpense(dataExpense: [String:Any], documentID: String) {
+    func updateDocument(dataDocument dataExpense: [String:Any], documentID: String) {
         let docReference = collectionReference.document(documentID)
         docReference.setData(dataExpense) { (error) in
             if let error = error {
@@ -55,7 +55,7 @@ class ExpenseManager {
         }
     }
     
-    func deleteExpense(documentID: String) {
+    func deleteDocument(documentID: String) {
         let docRefence = collectionReference.document(documentID)
         docRefence.delete { (error) in
             if let error = error {

@@ -129,7 +129,7 @@ class NewOperationViewController: UIViewController {
                     }
                 }
                 let expense = Expense(expenseValue: value, description: description, dateOperation: dateOperation.date, paymentStatus: paymentStatus.isOn)
-                expenseManager.addNewExpense(dataExpense: expense.dictionary)
+                expenseManager.addNewDocument(dataDocument: expense.dictionary)
             default:
                 let formatter = NumberFormatter()
                 formatter.locale = Locale(identifier: "pt_BR")
@@ -142,7 +142,7 @@ class NewOperationViewController: UIViewController {
                     }
                 }
                 let income = Income(incomeValue: value, description: description, dateOperation: dateOperation.date, receivedStatus: paymentStatus.isOn)
-                incomeManager.addNewIncome(dataIncome: income.dictionary)
+                incomeManager.addNewDocument(dataDocument: income.dictionary)
         }
         dismiss(animated: true, completion: nil)
     }
