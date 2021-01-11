@@ -16,16 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWu-Na-Jsd">
-                                <rect key="frame" x="145" y="478" width="124" height="30"/>
-                                <color key="backgroundColor" systemColor="systemRedColor"/>
-                                <state key="normal" title="Deletar Conta">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="deleteAccount:" destination="W7i-fW-6fu" eventType="touchUpInside" id="uHc-ts-mNR"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E8e-TV-FEp">
                                 <rect key="frame" x="145" y="388" width="124" height="30"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -40,12 +30,9 @@
                         <viewLayoutGuide key="safeArea" id="a5p-dI-3Ji"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="AWu-Na-Jsd" firstAttribute="centerX" secondItem="Vd8-rG-X83" secondAttribute="centerX" id="2KQ-n8-G1n"/>
-                            <constraint firstItem="AWu-Na-Jsd" firstAttribute="centerY" secondItem="Vd8-rG-X83" secondAttribute="centerY" multiplier="1.1" id="3ZI-hS-TXO"/>
                             <constraint firstItem="E8e-TV-FEp" firstAttribute="centerY" secondItem="Vd8-rG-X83" secondAttribute="centerY" multiplier="0.9" id="Ugt-Wn-X50"/>
                             <constraint firstItem="E8e-TV-FEp" firstAttribute="width" secondItem="Vd8-rG-X83" secondAttribute="width" multiplier="0.3" id="Xxq-9D-eg7"/>
                             <constraint firstItem="E8e-TV-FEp" firstAttribute="centerX" secondItem="Vd8-rG-X83" secondAttribute="centerX" id="qJe-Kf-pAX"/>
-                            <constraint firstItem="AWu-Na-Jsd" firstAttribute="width" secondItem="Vd8-rG-X83" secondAttribute="width" multiplier="0.3" id="uFG-IX-Ce6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Conta" id="W0K-gd-LkH">
@@ -87,9 +74,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

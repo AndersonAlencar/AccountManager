@@ -34,8 +34,4 @@ class SignOutAndDeleteViewController: UIViewController {
         let controller = storyboard.instantiateViewController(withIdentifier: "LoginControllerID") as! LoginViewController
         present(controller, animated: true, completion: nil)
     }
-    
-    @IBAction func deleteAccount(_ sender: Any) {
-        
-    }
 }
