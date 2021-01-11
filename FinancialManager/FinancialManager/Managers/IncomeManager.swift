@@ -66,4 +66,52 @@ class IncomeManager: FirebaseProtocol {
             }
         }
     }
+    
+    func incomeAmount(incomes: [Income], received: Bool) -> String {
+        var amount:Double = 0
+        if received == true {
+            for income in incomes {
+                if income.receivedStatus == true {
+                    amount += income.value
+                }
+            }
+        } else {
+            for income in incomes {
+                if income.receivedStatus == false {
+                    amount += income.value
+                }
+            }
+        }
+        return String(format: "%.2f", amount).replacingOccurrences(of: ".", with: ",")
+    }
+    
+    func amount(incomes: [Income]) -> Double {
+        var amount: Double = 0
+        for income in incomes {
+            amount += income.value
+        }
+        return amount
+    }
+    
+    func balance(expenses: [Expense], incomes: [Income]) -> String {
+        var expenseAmount: Double = 0
+        var incomeAmount: Double = 0
+        
+        for expense in expenses {
+            expenseAmount += expense.value
+        }
+        
+        for income in incomes {
+            incomeAmount += income.value
+        }
+        print(expenseAmount)
+        print(incomeAmount)
+        if expenseAmount > incomeAmount {
+            let absoute = abs((incomeAmount - expenseAmount))
+            return "-" + String(format: "%.2f", absoute).replacingOccurrences(of: ".", with: ",")
+        } else {
+            let absoute = incomeAmount - expenseAmount
+            return String(format: "%.2f", absoute).replacingOccurrences(of: ".", with: ",")
+        }
+    }
 }

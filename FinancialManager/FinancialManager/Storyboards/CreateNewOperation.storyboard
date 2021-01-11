@@ -140,13 +140,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="QOI-Yh-XER">
                         <barButtonItem key="leftBarButtonItem" title="Cancelar" id="IV8-FB-32Y">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="cancelOperation:" destination="cqo-Mb-a02" id="12Y-Re-Nfh"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Salvar" id="y3q-0D-vfU">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="saveOperation:" destination="cqo-Mb-a02" id="a1a-Af-s9C"/>
                             </connections>

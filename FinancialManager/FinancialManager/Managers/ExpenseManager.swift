@@ -65,4 +65,30 @@ class ExpenseManager: FirebaseProtocol {
             }
         }
     }
+    
+    func expenseAmount(expenses: [Expense], paid: Bool) -> String {
+        var amount:Double = 0
+        if paid == true {
+            for expense in expenses {
+                if expense.paymentStatus == true {
+                    amount += expense.value
+                }
+            }
+        } else {
+            for expense in expenses {
+                if expense.paymentStatus == false {
+                    amount += expense.value
+                }
+            }
+        }
+        return String(format: "%.2f", amount).replacingOccurrences(of: ".", with: ",")
+    }
+    
+    func amount(expenses: [Expense]) -> Double {
+        var amount: Double = 0
+        for expense in expenses {
+            amount += expense.value
+        }
+        return amount
+    }
 }

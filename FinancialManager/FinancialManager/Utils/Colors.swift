@@ -15,4 +15,5 @@ extension UIColor {
     static let incomeSegmented = UIColor(red: 0.33, green: 0.55, blue: 0.01, alpha: 1.00)
     static let primaryTextColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.00)
     static let expenseTextColor = UIColor(red: 0.85, green: 0.22, blue: 0.26, alpha: 1.00)
+    static let acessoryGreen = UIColor(red: 0.00, green: 0.80, blue: 0.40, alpha: 1.00)
 }
