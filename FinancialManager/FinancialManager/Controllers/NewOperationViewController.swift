@@ -32,12 +32,10 @@ class NewOperationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        incomeLayoutAnimate = NSLayoutConstraint(item: indicatorView as Any, attribute: .centerX, relatedBy: .equal, toItem: incomeCategory, attribute: .centerX, multiplier: 1.0, constant: 1)
-        expenseLayoutAnimate = NSLayoutConstraint(item: indicatorView as Any, attribute: .centerX, relatedBy: .equal, toItem: expenseCategory, attribute: .centerX, multiplier: 1.0, constant: 1)
         overrideUserInterfaceStyle = .light
         saveButton.isEnabled = false
         valueOperation.delegate = self
-        
+        setNewLayoutToIndicatorView()
         
         self.view.backgroundColor = .primaryColor
         self.isModalInPresentation = true
@@ -46,6 +44,11 @@ class NewOperationViewController: UIViewController {
         indicatorView.layer.cornerRadius = 4
         expenseCategory.setTitleColor(.expenseSegmented, for: .normal)
         incomeCategory.setTitleColor(.lightGray, for: .normal)
+    }
+    
+    func setNewLayoutToIndicatorView() {
+        incomeLayoutAnimate = NSLayoutConstraint(item: indicatorView as Any, attribute: .centerX, relatedBy: .equal, toItem: incomeCategory, attribute: .centerX, multiplier: 1.0, constant: 1)
+        expenseLayoutAnimate = NSLayoutConstraint(item: indicatorView as Any, attribute: .centerX, relatedBy: .equal, toItem: expenseCategory, attribute: .centerX, multiplier: 1.0, constant: 1)
     }
     
     func borderTF(){
@@ -65,6 +68,7 @@ class NewOperationViewController: UIViewController {
     }
     
     func setDatePicker() {
+        dateOperation.date = Date()
         dateOperation.backgroundColor = .white
     }
     

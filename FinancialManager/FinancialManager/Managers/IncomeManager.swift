@@ -14,6 +14,7 @@ class IncomeManager: FirebaseProtocol {
     let collectionReference: CollectionReference!
     var documentReferences = [String]()
 
+
     static let shared: IncomeManager = {
         return IncomeManager()
     }()
