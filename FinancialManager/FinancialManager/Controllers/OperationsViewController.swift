@@ -32,6 +32,7 @@ class OperationsViewController: UIViewController {
         overrideUserInterfaceStyle = .light
         setSegmentedOperation()
         configureTableView()
+        addGestureProfile()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -124,6 +125,18 @@ class OperationsViewController: UIViewController {
         operationsTable.backgroundColor = .primaryColor
         operationsTable.separatorStyle = .none
         operationsTable.register(UINib.init(nibName: "OperationTableViewCell", bundle: nil), forCellReuseIdentifier: "OperationCellIdentifier")
+    }
+    
+    func addGestureProfile() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(tapProfileIcon))
+        profileIcon.isUserInteractionEnabled = true
+        profileIcon.addGestureRecognizer(gesture)
+    }
+    
+    @objc func tapProfileIcon() {
+        let storyboard = UIStoryboard(name: "SignOutOrDeleteAccount", bundle: nil)
+        let newOperationController = storyboard.instantiateViewController(withIdentifier: "SignOutControllerID") as! UINavigationController
+        present(newOperationController, animated: true, completion: nil)
     }
     
     @IBAction func addNewOperation(_ sender: UIButton) {

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D8A7C87E77D4E3625D0D05BF /* Pods_FinancialManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE9345263F2005367A29AEAC /* Pods_FinancialManager.framework */; };
+		E205C3BE25ACA38F008E24F6 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E205C3BD25ACA38F008E24F6 /* Login.storyboard */; };
+		E205C3C125ACA3ED008E24F6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E205C3C025ACA3ED008E24F6 /* LoginViewController.swift */; };
+		E205C3EC25ACBB57008E24F6 /* SignOutOrDeleteAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E205C3EB25ACBB57008E24F6 /* SignOutOrDeleteAccount.storyboard */; };
+		E205C3EF25ACBE20008E24F6 /* SignOutAndDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E205C3EE25ACBE20008E24F6 /* SignOutAndDeleteViewController.swift */; };
 		E21DA1DE25A88ED80076B7F5 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DA1DD25A88ED80076B7F5 /* Expense.swift */; };
 		E21DA1E125A891760076B7F5 /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DA1E025A891760076B7F5 /* Income.swift */; };
 		E21DA1E825A897240076B7F5 /* FinanceTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E21DA1E725A897240076B7F5 /* FinanceTabBar.storyboard */; };
@@ -39,6 +43,11 @@
 /* Begin PBXFileReference section */
 		5B07DBA684F544440B6B63E3 /* Pods-FinancialManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinancialManager.debug.xcconfig"; path = "Target Support Files/Pods-FinancialManager/Pods-FinancialManager.debug.xcconfig"; sourceTree = "<group>"; };
 		8678C9F555DC2A8D61317862 /* Pods-FinancialManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinancialManager.release.xcconfig"; path = "Target Support Files/Pods-FinancialManager/Pods-FinancialManager.release.xcconfig"; sourceTree = "<group>"; };
+		E205C39625AC9F6F008E24F6 /* FinancialManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinancialManager.entitlements; sourceTree = "<group>"; };
+		E205C3BD25ACA38F008E24F6 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		E205C3C025ACA3ED008E24F6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E205C3EB25ACBB57008E24F6 /* SignOutOrDeleteAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignOutOrDeleteAccount.storyboard; sourceTree = "<group>"; };
+		E205C3EE25ACBE20008E24F6 /* SignOutAndDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutAndDeleteViewController.swift; sourceTree = "<group>"; };
 		E21DA1DD25A88ED80076B7F5 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		E21DA1E025A891760076B7F5 /* Income.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Income.swift; sourceTree = "<group>"; };
 		E21DA1E725A897240076B7F5 /* FinanceTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FinanceTabBar.storyboard; sourceTree = "<group>"; };
@@ -116,6 +125,8 @@
 				E21DA1EE25A89AA00076B7F5 /* ResumeExpense.storyboard */,
 				E2EC4C3325A94B380058182E /* CreateNewOperation.storyboard */,
 				E287631325AB4B14006FC9D3 /* EditOperation.storyboard */,
+				E205C3BD25ACA38F008E24F6 /* Login.storyboard */,
+				E205C3EB25ACBB57008E24F6 /* SignOutOrDeleteAccount.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -128,6 +139,8 @@
 				E21DA1FA25A8A30F0076B7F5 /* FinanceTabViewController.swift */,
 				E2EC4C3625A94E990058182E /* NewOperationViewController.swift */,
 				E287631625AB5072006FC9D3 /* EditOperationViewController.swift */,
+				E205C3C025ACA3ED008E24F6 /* LoginViewController.swift */,
+				E205C3EE25ACBE20008E24F6 /* SignOutAndDeleteViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -153,6 +166,7 @@
 		E2B91E5425A8888400633D1A /* FinancialManager */ = {
 			isa = PBXGroup;
 			children = (
+				E205C39625AC9F6F008E24F6 /* FinancialManager.entitlements */,
 				E2EC4C1825A8EE420058182E /* Utils */,
 				E21DA1F125A89B2C0076B7F5 /* Controllers */,
 				E21DA1E625A896B50076B7F5 /* Storyboards */,
@@ -211,6 +225,7 @@
 				E2B91E4F25A8888400633D1A /* Frameworks */,
 				E2B91E5025A8888400633D1A /* Resources */,
 				2CE693E5BBB505C4E533CA67 /* [CP] Embed Pods Frameworks */,
+				3D2CCB0E8DD099C538571543 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -260,6 +275,8 @@
 			files = (
 				E2B91E6225A8888600633D1A /* LaunchScreen.storyboard in Resources */,
 				E21DA1E825A897240076B7F5 /* FinanceTabBar.storyboard in Resources */,
+				E205C3BE25ACA38F008E24F6 /* Login.storyboard in Resources */,
+				E205C3EC25ACBB57008E24F6 /* SignOutOrDeleteAccount.storyboard in Resources */,
 				E2EC4C3425A94B380058182E /* CreateNewOperation.storyboard in Resources */,
 				E2B91E6B25A88A3500633D1A /* GoogleService-Info.plist in Resources */,
 				E21DA1EC25A899C70076B7F5 /* Operations.storyboard in Resources */,
@@ -312,6 +329,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FinancialManager/Pods-FinancialManager-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3D2CCB0E8DD099C538571543 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FinancialManager/Pods-FinancialManager-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FinancialManager/Pods-FinancialManager-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FinancialManager/Pods-FinancialManager-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -319,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E205C3C125ACA3ED008E24F6 /* LoginViewController.swift in Sources */,
 				E21DA1F825A8A2D00076B7F5 /* ResumeExpenseViewController.swift in Sources */,
 				E2EC4C1C25A8EE650058182E /* Colors.swift in Sources */,
 				E2EC4C3725A94E990058182E /* NewOperationViewController.swift in Sources */,
@@ -331,6 +366,7 @@
 				E287631D25AB5A05006FC9D3 /* ModelProtocol.swift in Sources */,
 				E21DA1FB25A8A30F0076B7F5 /* FinanceTabViewController.swift in Sources */,
 				E287631725AB5072006FC9D3 /* EditOperationViewController.swift in Sources */,
+				E205C3EF25ACBE20008E24F6 /* SignOutAndDeleteViewController.swift in Sources */,
 				E2EC4C2C25A8FAA20058182E /* OperationTableViewCell.swift in Sources */,
 				E2EC4C3025A916FD0058182E /* IncomeManager.swift in Sources */,
 				E2B91E5625A8888400633D1A /* AppDelegate.swift in Sources */,
@@ -475,7 +511,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FinancialManager/FinancialManager.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3XAHB7RJJD;
 				INFOPLIST_FILE = FinancialManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -495,7 +533,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FinancialManager/FinancialManager.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3XAHB7RJJD;
 				INFOPLIST_FILE = FinancialManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

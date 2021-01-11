@@ -9,7 +9,7 @@
         <!--Finance Tab View Controller-->
         <scene sceneID="Ak3-Wu-6BR">
             <objects>
-                <tabBarController id="tx8-yh-Pbk" customClass="FinanceTabViewController" customModule="FinancialManager" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabControllerID" id="tx8-yh-Pbk" customClass="FinanceTabViewController" customModule="FinancialManager" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5T2-TE-YPk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
