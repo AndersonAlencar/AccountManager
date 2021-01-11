@@ -104,8 +104,7 @@ class IncomeManager: FirebaseProtocol {
         for income in incomes {
             incomeAmount += income.value
         }
-        print(expenseAmount)
-        print(incomeAmount)
+
         if expenseAmount > incomeAmount {
             let absoute = abs((incomeAmount - expenseAmount))
             return "-" + String(format: "%.2f", absoute).replacingOccurrences(of: ".", with: ",")
